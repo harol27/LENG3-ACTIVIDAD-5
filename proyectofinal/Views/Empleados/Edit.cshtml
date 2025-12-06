@@ -1,0 +1,52 @@
+﻿@model proyectofinal.Models.Empleado
+@using Microsoft.AspNetCore.Mvc.Rendering
+
+<h2>Editar Empleado</h2>
+
+<form asp-action="Edit" method="post">
+
+    <input type="hidden" asp-for="Id" />
+
+    <div class="mb-3">
+        <label asp-for="Nombre"></label>
+        <input asp-for="Nombre" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="DepartamentoId"></label>
+        <select asp-for="DepartamentoId"
+                asp-items="@(new SelectList(ViewBag.Departamentos, "Id", "Nombre", Model.DepartamentoId))"
+                class="form-control">
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="CargoId"></label>
+        <select asp-for="CargoId"
+                asp-items="@(new SelectList(ViewBag.Cargos, "Id", "Nombre", Model.CargoId))"
+                class="form-control">
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="FechaInicio"></label>
+        <input asp-for="FechaInicio" class="form-control" type="date" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Salario"></label>
+        <input asp-for="Salario" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Vigente"></label>
+        <select asp-for="Vigente" class="form-control">
+            <option value="true">Vigente</option>
+            <option value="false">No vigente</option>
+        </select>
+    </div>
+
+    <button class="btn btn-primary">Guardar cambios</button>
+    <a asp-action="Index" class="btn btn-secondary">Volver</a>
+
+</form>

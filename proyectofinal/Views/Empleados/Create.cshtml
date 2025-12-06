@@ -1,0 +1,50 @@
+﻿@model proyectofinal.Models.Empleado
+@using Microsoft.AspNetCore.Mvc.Rendering
+
+<h2>Nuevo Empleado</h2>
+
+<form asp-action="Create" method="post">
+
+    <div class="mb-3">
+        <label asp-for="Nombre"></label>
+        <input asp-for="Nombre" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="DepartamentoId"></label>
+        <select asp-for="DepartamentoId"
+                asp-items="@(new SelectList(ViewBag.Departamentos, "Id", "Nombre"))"
+                class="form-control">
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="CargoId"></label>
+        <select asp-for="CargoId"
+                asp-items="@(new SelectList(ViewBag.Cargos, "Id", "Nombre"))"
+                class="form-control">
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="FechaInicio"></label>
+        <input asp-for="FechaInicio" type="date" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Salario"></label>
+        <input asp-for="Salario" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Vigente"></label>
+        <select asp-for="Vigente" class="form-control">
+            <option value="true">Vigente</option>
+            <option value="false">No vigente</option>
+        </select>
+    </div>
+
+    <button class="btn btn-success">Guardar</button>
+    <a asp-action="Index" class="btn btn-secondary">Volver</a>
+
+</form>
